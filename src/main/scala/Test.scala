@@ -1,18 +1,11 @@
 import org.apache.spark.SparkContext
-
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.SparkSession
 
 object Test{
        def main(args:Array[String]){
-       val actionFile = "hdfs://127.0.0.1:9000/user/hive/warehouse/jingdong.db/jdata_action"
-       val action = new Action(actionFile)
-       action.loadData()
-       val logFile = "hdfs://127.0.0.1:9000/user/hive/warehouse/jingdong.db/jdata_user/JData_User.csv"
-       
-      val spark = SparkSession.builder().appName("spark sql").getOrCreate()
-      import spark.implicits._
-      val df = spark.read.option("header", "true").option("encoding","utf-8").csv(logFile);
-      df.show()
+       	   val hive = new Hive()
+	   hive.nova()
+
        }
 }
